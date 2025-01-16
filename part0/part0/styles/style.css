@@ -1,0 +1,26 @@
+html {
+    background-color: aqua;
+}
+
+p#introducing {
+    color: red;
+  }  
+
+a {
+    color: green;
+  }  
+ 
+div#container > div {
+    background-color: green;
+}
+
+a:hover {
+    color: orange;
+    border-bottom: double;
+}
+
+div#container {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+}
