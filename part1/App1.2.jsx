@@ -27,8 +27,8 @@ const Part = (props) => {
 
 const Content = () => {
   return (
-    <div id='d1'>
-      <Part name={'Fundamentals of React'} number={10} id='p1'/>
+    <div>
+      <Part name={'Fundamentals of React'} number={10}/>
       <Part name={'Using props to pass data'} number={7}/>
       <Part name={'State of a component'} number={14}/>
     </div>
