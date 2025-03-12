@@ -1,12 +1,14 @@
 import Persons from './components/Persons'
 import PersonForm from './components/PersonForm'
 import personsService from './services/personsservice'
+import Notification from './components/Notification'
 import { useState, useEffect } from 'react'
 
 const App = () => {
   const [persons, setPersons] = useState([]) 
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
+  const [message, setMessage] = useState(null)
 
   useEffect(() => {
     personsService.getAll().then(response => {
@@ -20,6 +22,10 @@ const App = () => {
     if (persons.map(person => person.name).includes(newName) === false) {
       personsService
       .create({ name: newName, number: newNumber }).then(response => {
+        setMessage(`Added ${newName}`)
+        setTimeout(() => {
+          setMessage(null)
+        }, 4000)
         setPersons(persons.concat(response))
         setNewName('')
         setNewNumber('')
@@ -34,6 +40,10 @@ const pers = persons.find(person => person.id === id)
 const name = pers ? pers.name : "Not found"
 
   if (window.confirm(`Delete ${name} ?`)) {
+    setMessage(`Removed ${name}`)
+    setTimeout(() => {
+      setMessage(null)
+    }, 4000)
     setPersons(persons.filter(person => person.id !== id))
     personsService.remove(id)
   }
@@ -50,6 +60,7 @@ const handleNumberInput = (event) => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification message={message} />
 
       <h3>Add a new number</h3>
 
