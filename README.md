@@ -1,1 +1,1 @@
-Repo for web programming course exercises and course project
+Repo for web programming course exercises and course project. Course project is a web application for viewing information about bars, such as location, opening hours and prices. Adding and viewing reviews is also possible.
